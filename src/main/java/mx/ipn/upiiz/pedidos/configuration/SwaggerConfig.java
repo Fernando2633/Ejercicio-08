@@ -29,7 +29,7 @@ import org.springframework.context.annotation.Configuration;
                 version = "1.0.0"),
         servers = {
                 @Server(url = "/", description = "Servidor actual"),
-                @Server(url = "https://api-pedidos-fagr.onrender.com", description = "Render (producción)"),
+                @Server(url = "https://ejercicio-08-fuzl.onrender.com", description = "Render (producción)"),
                 @Server(url = "http://localhost:8080", description = "Local")
         })
 public class SwaggerConfig {

@@ -81,7 +81,8 @@ public class PedidoController {
     @GetMapping
     public ResponseEntity<ApiRespuesta<List<PedidoDTO>>> listarPedidos() {
         List<PedidoDTO> pedidos = service.listar();
-        String mensaje = pedidos.isEmpty() ? "No hay pedidos registrados" : "Se encontraron " + pedidos.size() + " pedidos";
+        String mensaje = pedidos.isEmpty() ? "No hay pedidos registrados"
+                : pedidos.size() == 1 ? "Se encontró 1 pedido" : "Se encontraron " + pedidos.size() + " pedidos";
         return ResponseEntity.ok(ApiRespuesta.exito(200, mensaje, pedidos));
     }
 
@@ -123,6 +124,7 @@ public class PedidoController {
         List<PedidoDTO> pedidos = service.buscarPorEstado(estado);
         String mensaje = pedidos.isEmpty()
                 ? "No hay pedidos con estado " + estado.trim()
+                : pedidos.size() == 1 ? "Se encontró 1 pedido con estado " + estado.trim()
                 : "Se encontraron " + pedidos.size() + " pedidos con estado " + estado.trim();
         return ResponseEntity.ok(ApiRespuesta.exito(200, mensaje, pedidos));
     }

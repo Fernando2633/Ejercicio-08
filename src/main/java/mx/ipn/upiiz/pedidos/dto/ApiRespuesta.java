@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class ApiRespuesta<T> {
         this.mensaje = mensaje;
         this.datos = datos;
         this.errores = errores;
-        this.fecha = LocalDateTime.now(ZoneId.of("America/Mexico_City"));
+        this.fecha = LocalDateTime.now(ZoneId.of("America/Mexico_City")).truncatedTo(ChronoUnit.SECONDS);
     }
 
     public static <T> ApiRespuesta<T> exito(int estado, String mensaje, T datos) {
